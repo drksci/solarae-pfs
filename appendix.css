@@ -1,0 +1,152 @@
+/* Solarae report — markdown appendix pages.
+ *
+ * The documents are rendered to HTML at build time (tools/render_md.mjs), so
+ * everything here is presentation only: no loading states, no client-side
+ * behaviour, and the pages read the same on screen, in print and offline.
+ *
+ * Loaded last in <head> so it wins ties against the report's own inline styles.
+ * Everything is scoped to `.sheet .md-body` (specificity 0,2,1) so the report's
+ * `.sheet table th` / `.sheet h3` rules can never leak into a rendered document.
+ * Palette is the report's own: the light-sheet tokens, one monochrome family.
+ */
+
+/* The file label, above the top-left of the page. */
+.md-label {
+  margin: 0 0 22px;
+  font: 600 9.6px/1.3 var(--mono, ui-monospace, monospace);
+  letter-spacing: .08em;
+  color: var(--e500);
+  overflow-wrap: anywhere;
+}
+.md-label .md-label-k {
+  display: inline-block;
+  margin-right: .7em;
+  padding: .18em .45em;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.md-label b { color: var(--e1000); font-weight: 650; }
+
+.md-sheet .pagehead { margin-bottom: 34px; }
+
+/* Rendered document body. */
+.sheet .md-body {
+  max-width: 760px;
+  color: var(--e800);
+  font-family: var(--sans);
+  font-size: 13.2px;
+  line-height: 1.58;
+  letter-spacing: var(--tight-xs);
+  overflow-wrap: break-word;
+}
+.sheet .md-body > :first-child { margin-top: 0; }
+.sheet .md-body h1,
+.sheet .md-body h2,
+.sheet .md-body h3,
+.sheet .md-body h4,
+.sheet .md-body h5,
+.sheet .md-body h6 {
+  color: var(--e1000);
+  font-family: var(--sans);
+  letter-spacing: -.022em;
+  line-height: 1.16;
+}
+.sheet .md-body h1 { margin: 40px 0 16px; font-size: 25px; font-weight: 650; }
+.sheet .md-body h2 {
+  margin: 34px 0 13px;
+  padding-top: 13px;
+  border-top: 1px solid var(--e150);
+  font-size: 18px;
+  font-weight: 700;
+}
+.sheet .md-body h3 { margin: 26px 0 9px; font-size: 15px; font-weight: 700; }
+.sheet .md-body h4 { margin: 20px 0 7px; font-size: 13.4px; font-weight: 700; }
+.sheet .md-body h5,
+.sheet .md-body h6 { margin: 17px 0 6px; font-size: 12.4px; font-weight: 700; letter-spacing: 0; }
+.sheet .md-body p { margin: 0 0 12px; max-width: none; }
+.sheet .md-body ul,
+.sheet .md-body ol { margin: 0 0 14px; padding-left: 1.35em; }
+.sheet .md-body li { margin: 0 0 5px; }
+.sheet .md-body li > p { margin: 0 0 6px; }
+.sheet .md-body a { color: inherit; text-decoration-color: var(--e300); text-underline-offset: 2px; }
+.sheet .md-body strong { color: var(--e1000); font-weight: 700; }
+.sheet .md-body em { font-style: italic; }
+.sheet .md-body hr { margin: 26px 0; border: 0; border-top: 1px solid var(--e150); }
+.sheet .md-body blockquote {
+  margin: 0 0 16px;
+  padding: 2px 0 2px 14px;
+  border-left: 2px solid var(--e300);
+  color: var(--e500);
+}
+.sheet .md-body code {
+  padding: .1em .34em;
+  border-radius: 2px;
+  background: var(--e50);
+  font-family: var(--mono, ui-monospace, monospace);
+  font-size: 11.3px;
+  letter-spacing: 0;
+}
+.sheet .md-body pre {
+  margin: 0 0 17px;
+  padding: 12px 14px;
+  border: 1px solid var(--e150);
+  background: var(--e50);
+  font: 11.1px/1.5 var(--mono, ui-monospace, monospace);
+  letter-spacing: 0;
+  overflow-x: auto;
+}
+.sheet .md-body pre code { padding: 0; background: none; font-size: inherit; white-space: pre; }
+.sheet .md-body table {
+  width: 100%;
+  max-width: 100%;
+  margin: 6px 0 18px;
+  border-collapse: collapse;
+  font-size: 10.6px;
+  line-height: 1.34;
+  font-variant-numeric: tabular-nums;
+}
+.sheet .md-body table th,
+.sheet .md-body table td {
+  padding: 5px 7px;
+  border: 1px solid var(--e150);
+  text-align: left;
+  vertical-align: top;
+}
+.sheet .md-body table thead th {
+  background: var(--e50);
+  color: var(--e1000);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.sheet .md-body img { max-width: 100%; height: auto; }
+.sheet .md-body input[type="checkbox"] { margin-right: .4em; }
+
+/* Index sheet. */
+.md-index-group { margin: 0 0 24px; }
+.md-index-group .md-index-k {
+  display: block;
+  margin-bottom: 7px;
+  font: 800 9.4px/1.2 var(--mono, ui-monospace, monospace);
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--e1000);
+}
+.md-index-group p { margin: 0 0 9px; font-size: 11.6px; color: var(--e500); }
+.md-index-group ul { margin: 0; padding: 0; list-style: none; }
+.md-index-group li { margin: 0 0 5px; font-size: 11.6px; line-height: 1.4; }
+.md-index-group li a { color: inherit; text-decoration-color: var(--e300); text-underline-offset: 2px; }
+.md-index-group li span { color: var(--e500); }
+
+@media print {
+  .md-sheet { break-after: page; }
+  .sheet .md-body { font-size: 10.4px; line-height: 1.42; }
+  .sheet .md-body h1 { font-size: 19px; }
+  .sheet .md-body h2 { font-size: 14px; }
+  .sheet .md-body h3 { font-size: 12px; }
+  .sheet .md-body table { font-size: 8.6px; line-height: 1.22; }
+  .sheet .md-body pre { font-size: 8.6px; overflow: visible; }
+  .sheet .md-body a { text-decoration: none; }
+}
